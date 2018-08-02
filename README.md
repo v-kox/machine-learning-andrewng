@@ -1,2 +1,1 @@
-# machine-learning-andrewng
-Repository for the Coursera Course 'Machine Learning by Andrew Ng'
+This is my personal repo for the Machine Learning Course By Andrew Ng on Coursera
