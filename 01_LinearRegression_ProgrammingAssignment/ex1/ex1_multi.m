@@ -87,25 +87,41 @@ num_iters = 400;
 
 % Init Theta and Run Gradient Descent 
 theta = zeros(3, 1);
-[theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
-
+[theta0, J_history0] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+[theta1, J_history1] = gradientDescentMulti(X, y, theta, 0.1, num_iters);
+[theta2, J_history2] = gradientDescentMulti(X, y, theta, 0.3, num_iters);
+[theta3, J_history3] = gradientDescentMulti(X, y, theta, 0.03, num_iters);
+[theta4, J_history4] = gradientDescentMulti(X, y, theta, 0.001, num_iters);
+[theta5, J_history5] = gradientDescentMulti(X, y, theta, 0.003, num_iters);
 % Plot the convergence graph
 figure;
-plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
+plot(1:numel(J_history0), J_history0, '-b', 'LineWidth', 2);
+hold on
+plot(1:numel(J_history1), J_history1, '-r', 'LineWidth', 2);
+plot(1:numel(J_history2), J_history2, '-g', 'LineWidth', 2);
+plot(1:numel(J_history3), J_history3, '-k', 'LineWidth', 2);
+plot(1:numel(J_history4), J_history4, '-m', 'LineWidth', 2);
+plot(1:numel(J_history5), J_history5, '-c', 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
+legend('0.01', '0.1', '0.3', '0.03', '0.001', '0.003')
 
 % Display gradient descent's result
 fprintf('Theta computed from gradient descent: \n');
-fprintf(' %f \n', theta);
+fprintf(' %f \n', theta0);
 fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
+feat = [1650, 3];
+% normalize features
+feat_norm = (feat - mu) ./ sigma;
+feat_norm = [1, feat_norm];
 
+% calculate price
+price = feat_norm * theta2; 
 
 % ============================================================
 
@@ -149,7 +165,8 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+feat = [1, 1650, 3];
+price = feat*theta; % You should change this
 
 
 % ============================================================
