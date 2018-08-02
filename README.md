@@ -1,4 +1,5 @@
-#Machine Learning by Andrew Ng
+# Machine Learning by Andrew Ng
+
 This is my personal repository for the Coursera course [Machine Learning by Andrew Ng](https://www.coursera.org/learn/machine-learning "Course Link").
 
 *Please do NOT use the scripts available in this repo to cheat your way through the course.*
